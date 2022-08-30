@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import getCompanyDetails from '@salesforce/apex/LWCController.getCompanyDetails';
-
+import saveRecord from '@salesforce/apex/LWCController.saveRecord';
 const columns = [
     {
         label: "ACC ID",
@@ -94,6 +94,7 @@ export default class CompanyRecordComponent extends LightningElement {
         console.log(this.contact);
         console.log(this.deal);
         saveRecord({company: this.company, contact: this.contact, deal: this.deal});
+        this.showModal = false;
     }
 
     connectedCallback(){
