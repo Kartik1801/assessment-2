@@ -1,5 +1,6 @@
 @RestResource(urlMapping='/data')
 global with sharing class FetchAPI {
+    
     @httpPost
     global static String pushData(){
         RestRequest req = RestContext.request;
@@ -117,4 +118,35 @@ global with sharing class FetchAPI {
         System.debug(upd);
         return 'OK';
     }
+
+    @httpGet
+    global static string getData(){
+        RestRequest req = RestContext.request;
+
+        if(!req.params.isEmpty()){
+
+            if(req.params.containsKey('get')){
+                if(req.params.get('get') == 'contact'){
+                    List<ContactC__c> contacts = [ SELECT NAME, description__c, External_Last_Modified_DateTime__c, Contact_External_System_Id__c FROM ContactC__c ];
+                    return contacts.toString();
+                }
+                else if(req.params.get('get') == 'company'){
+                    List<CompanyC__c> company = [ SELECT Name__c, Description__c, External_Last_Modified_DateTime__c, Company_External_System_Id__c FROM CompanyC__c ];
+                    return company.toString();
+                }
+                else if(req.params.get('get') == 'deal'){
+                    List<DealC__c> deals = [ SELECT Name__c, Description__c, Deal_External_System_Id__c, External_Last_Modified_DateTime__c FROM DealC__c ];
+                    return deals.toString();
+                }
+                
+            }
+            
+        }
+        else{
+            
+            return 'Please pass the get Param';
+        } 
+        return 'Wrong Params Passed';
+    }
+
 }
