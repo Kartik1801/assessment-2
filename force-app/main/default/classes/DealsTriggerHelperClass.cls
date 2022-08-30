@@ -22,11 +22,7 @@ public with sharing class DealsTriggerHelperClass {
                 mail.setSubject('New Deal Added');
                 mail.setPlainTextBody('Hey there, \n A new deal " ' +deal.name__C + ' " is Added.  \n Please Contact ' + contactName + ' For more details');
                 Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
-
             }
         }
-        
-
-
     }
 }
