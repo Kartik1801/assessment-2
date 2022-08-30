@@ -29,23 +29,23 @@ public with sharing class RequestParser {
  "company":{
     "name": "Cyntexa",
     "description":"IT",
-    "company_external_system_id":"1",
+    "company_external_system_id":"111",
     "external_last_modified_datetime":"2022-08-20T10:00:00Z",
     "deals":[
         {
             "name":"First Contract",
-            "amount":"20000000",
+            "amount":"200000",
             "description":"Pending",
-            "contact_person":"1",
-            "deal_external_system_id":"1",
+            "contact_person":"131",
+            "deal_external_system_id":"121",
             "external_last_modified_datetime":"2022-08-20T10:10:00Z"
         },
         {
             "name":"Second Contract",
             "amount":"2112310",
             "description":"In Progress",
-            "contact_person":"2",
-            "deal_external_system_id":"2",
+            "contact_person":"131",
+            "deal_external_system_id":"141",
             "external_last_modified_datetime":"2022-08-15T10:30:00Z"
         }
     ],
@@ -53,13 +53,13 @@ public with sharing class RequestParser {
         {
             "name":"Ajay",
             "description":"BA",
-            "contact_external_system_id":"1",
+            "contact_external_system_id":"131",
             "external_last_modified_datetime":"2022-08-20T10:00:00Z"
         },
         {
             "name":"Amit",
             "description":"QA",
-            "contact_external_system_id":"2",
+            "contact_external_system_id":"211",
             "external_last_modified_datetime":"2022-08-15T10:10:00Z"			
         }
 	]
