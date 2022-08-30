@@ -12,21 +12,19 @@ public with sharing class LWCController {
     @AuraEnabled
     public static void  saveRecord(CompanyC__c company, ContactC__c contact, DealC__c deal){
         try {
-            String random = DateTIme.now().formatLong();
-            CompanyC__c companyRef = new CompanyC__c(Company_External_System_Id__c = 'c' + random);
-            company.Company_External_System_Id__c = random;
-            ContactC__c contactRef = new ContactC__c(Contact_External_System_Id__c = random + 'c');
-            contact.Company__r = companyRef;
-            contact.Contact_External_System_Id__c = random + 'c';
-            deal.Contact__r = contactRef;
-            deal.Company__r = companyRef;
+            
+            insert company;
+            contact.Company__c = company.id;
 
-            Database.SaveResult[] r = Database.insert(new SObject[] { company, contact, deal },false);
+            insert contact;
+            deal.Company__c = company.id;
+            deal.Contact__c = contact.id;
+            insert deal;
+            
             System.debug(company);
             System.debug(contact);
             System.debug(deal);
-            System.debug(r);
-        } catch (Exception e) {
+            } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }

@@ -86,15 +86,16 @@ export default class CompanyRecordComponent extends LightningElement {
         this.company.Name__c = this.companyName.value;
         this.company.Description__c = this.companyDescription.value;
         this.contact.Name = this.contactName.value;
-        this.contact.Description__c = this.contactDescription.value;
+        this.contact.description__c = this.contactDescription.value;
         this.deal.Name__c = this.dealName.value;
         this.deal.Description__c = this.dealDescription.value;
         this.deal.Amount__c = this.dealAmount.value;
         console.log(this.company);
         console.log(this.contact);
         console.log(this.deal);
-        saveRecord({company: this.company, contact: this.contact, deal: this.deal});
-        this.showModal = false;
+        saveRecord({company: this.company, contact: this.contact, deal: this.deal})
+        .then(() => this.showModal = false)
+        .catch(e => console.log(e.message)) 
     }
 
     connectedCallback(){
