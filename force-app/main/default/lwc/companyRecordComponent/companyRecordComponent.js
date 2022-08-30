@@ -66,7 +66,6 @@ export default class CompanyRecordComponent extends LightningElement {
     contact = {};
     deal = {};
 
-
     handleModal(){
         this.showModal = !this.showModal;
     }
@@ -74,7 +73,6 @@ export default class CompanyRecordComponent extends LightningElement {
         this.showModal = false;
     }
 
-    
     handleSubmit(){
         this.companyName = this.template.querySelector('.companyName')
         this.companyDescription = this.template.querySelector('.companyDescription')
